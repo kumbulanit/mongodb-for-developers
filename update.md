@@ -16,14 +16,14 @@ Ensure your MongoDB environment is running, and you have the `companyDB` databas
 
 We will use the `updateOne()` method to update a specific employee's salary.
 
-1. **Check the current state of the `employees` collection:**
+1. **Check the current state of the `collectionName` collection:**
    ```javascript
-   db.employees.find({ name: "John Doe" }).pretty();
+   db.collectionName.find({ name: "John Doe" }).pretty();
    ```
 
 2. **Use `updateOne()` to change John Doe’s salary:**
    ```javascript
-   db.employees.updateOne(
+   db.collectionName.updateOne(
       { name: "John Doe" },  // Filter: Find the employee by name
       { $set: { salary: NumberDecimal("80000.00") } }  // Update: Set the new salary
    );
@@ -31,7 +31,7 @@ We will use the `updateOne()` method to update a specific employee's salary.
 
 3. **Verify the update:**
    ```javascript
-   db.employees.find({ name: "John Doe" }).pretty();
+   db.collectionName.find({ name: "John Doe" }).pretty();
    ```
    - You should see the updated salary reflected in the document.
 
@@ -39,28 +39,28 @@ We will use the `updateOne()` method to update a specific employee's salary.
 
 Now, we will use `updateMany()` to update multiple documents based on a common condition.
 
-1. **Insert multiple employees to demonstrate `updateMany()`:**
+1. **Insert multiple collectionName to demonstrate `updateMany()`:**
    ```javascript
-   db.employees.insertMany([
+   db.collectionName.insertMany([
       { name: "Jake Peralta", department: "Detective", salary: NumberDecimal("55000.00") },
       { name: "Terry Jeffords", department: "Detective", salary: NumberDecimal("62000.00") },
       { name: "Rosa Diaz", department: "Detective", salary: NumberDecimal("58000.00") }
    ]);
    ```
 
-2. **Use `updateMany()` to increase the salary of all employees in the "Detective" department:**
+2. **Use `updateMany()` to increase the salary of all collectionName in the "Detective" department:**
    ```javascript
-   db.employees.updateMany(
-      { department: "Detective" },  // Filter: Employees in "Detective" department
+   db.collectionName.updateMany(
+      { department: "Detective" },  // Filter: collectionName in "Detective" department
       { $inc: { salary: 5000 } }  // Update: Increase the salary by 5000
    );
    ```
 
 3. **Verify the update:**
    ```javascript
-   db.employees.find({ department: "Detective" }).pretty();
+   db.collectionName.find({ department: "Detective" }).pretty();
    ```
-   - All employees in the "Detective" department should now have their salaries increased by 5000.
+   - All collectionName in the "Detective" department should now have their salaries increased by 5000.
 
 ---
 
